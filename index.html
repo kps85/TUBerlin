@@ -9,26 +9,32 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
-test123
+
 <body id="page">
 <div class="container">
   <header class="row">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header"><a class="navbar-brand" href="index.html">PPSN 2 DO</a></div>
-        <div class="collapse navbar-collapse">
+        <div class="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.html">Home</a></li>
             <li><a href="createEntry.html">New Entry</a></li>
             <li><a href="impress.html">Impress</a></li>
           </ul>
-          <a class="navbar-brand navbar-right" href="http://www.tu-berlin.de" target="blank"><img alt="Technische Universität Berlin" src="img/tub_logo.png" width="25"></a>
+          <a class="navbar-brand navbar-right hidden-xs" href="http://www.tu-berlin.de" target="blank"><img alt="Technische Universität Berlin" src="img/tub_logo.png" width="25"></a>
         </div>
       </div>
     </nav>
   </header>
-  <nav class="row pull-right" style="margin-bottom: 15px; padding-right: 0px;">
-    <div class="btn-group">
+  <nav class="row" style="margin-bottom: 15px; padding-right: 0px;">
+    <form class="pull-left" role="search">
+      <div class="form-group pull-left">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-primary pull-left">Go</button>
+    </form>
+    <div class="btn-group pull-right">
       <button type="button" class="btn btn-default">List: 5</button>
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
       <ul class="dropdown-menu">
@@ -51,36 +57,56 @@ test123
       <tr class="success">
         <td>23. April 2015</td>
         <td>Clean the dishes</td>
-        <td><div class="progress"><div class="progress-bar" style="min-width: 0%; width: 100%;">100%</div></div></td>
-        <td><a href="editEntry.html"><button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+        <td><div class="progress">
+            <div class="progress-bar" style="min-width: 0%; width: 100%;">100%</div>
+          </div></td>
+        <td><a href="editEntry.html">
+          <button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button>
+          </a></td>
         <td><button type="button" class="btn btn-default btn-xs btn-block"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
       <tr class="warning">
         <td>27. April 2015</td>
         <td>Consultation Task 1 (PPSN)</td>
-        <td><div class="progress"><div class="progress-bar" style="min-width: 2em; width: 10%;">10%</div></div></td>
-        <td><a href="editEntry.html"><button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+        <td><div class="progress">
+            <div class="progress-bar" style="min-width: 2em; width: 10%;">10%</div>
+          </div></td>
+        <td><a href="editEntry.html">
+          <button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button>
+          </a></td>
         <td><button type="button" class="btn btn-default btn-xs btn-block"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
       <tr>
         <td>07. Mai 2015</td>
         <td>Birthday Brother</td>
-        <td><div class="progress"><div class="progress-bar" style="min-width: 2em; width: 15%;">15%</div></div></td>
-        <td><a href="editEntry.html"><button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+        <td><div class="progress">
+            <div class="progress-bar" style="min-width: 2em; width: 15%;">15%</div>
+          </div></td>
+        <td><a href="editEntry.html">
+          <button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button>
+          </a></td>
         <td><button type="button" class="btn btn-default btn-xs btn-block"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
       <tr class="danger">
         <td>31. Mai 2015</td>
         <td>Deadline QISPOS (Anwendungssysteme)</td>
-        <td><div class="progress"><div class="progress-bar" style="min-width: 2em; width: 20%;">20%</div></div></td>
-        <td><a href="editEntry.html"><button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+        <td><div class="progress">
+            <div class="progress-bar" style="min-width: 2em; width: 20%;">20%</div>
+          </div></td>
+        <td><a href="editEntry.html">
+          <button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button>
+          </a></td>
         <td><button type="button" class="btn btn-default btn-xs btn-block"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
       <tr class="warning">
         <td>08. Mai 2015</td>
         <td>Consultation Project (PPSN)</td>
-        <td><div class="progress"><div class="progress-bar" style="min-width: 2em; width: 25%;">25%</div></div></td>
-        <td><a href="editEntry.html"><button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button></a></td>
+        <td><div class="progress">
+            <div class="progress-bar" style="min-width: 2em; width: 25%;">25%</div>
+          </div></td>
+        <td><a href="editEntry.html">
+          <button type="button" class="btn btn-primary btn-xs btn-block"><span class="glyphicon glyphicon-pencil"></span></button>
+          </a></td>
         <td><button type="button" class="btn btn-default btn-xs btn-block"><span class="glyphicon glyphicon-trash"></span></button></td>
       </tr>
     </table>
