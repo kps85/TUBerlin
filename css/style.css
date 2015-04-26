@@ -2,7 +2,7 @@ a, .pagination > li > a, .pagination > li > span { color: rgba(197,14,31,1); }
 a:hover, a:focus, .pagination > li > a:hover, .pagination > li > span:hover { color: rgba(167,14,31,1); }
 
 .btn-primary { background-color: rgba(197,14,31,1); border-color: rgba(217,14,31,1); }
-.btn-primary:hover { background-color: rgba(167,14,31,1); border-color: rgba(187,14,31,1); }
+.btn-primary:hover, .btn-primary:focus { background-color: rgba(167,14,31,1); border-color: rgba(187,14,31,1); }
 
 .progress-bar {
   background-image: -webkit-linear-gradient(top, #d90e1f 0%, #c50e1f 100%);
