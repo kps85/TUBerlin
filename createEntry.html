@@ -29,13 +29,22 @@
   </header>
   <div class="row" id="content">  
       <form>
-          <div class="col-xs-6 form-group">
+          <div class="col-xs-4 form-group">
             <label for="dateInput">Date</label>
             <input type="date" class="form-control" id="dateInput">
           </div>  
-          <div class="col-xs-6 form-group">
+          <div class="col-xs-4 form-group">
             <label for="progInput">Progress</label>
             <input type="number" class="form-control" id="progInput" min="0" max="100" placeholder="Progress in % ...">
+          </div>
+          <div class="col-xs-4 form-group">
+            <label for="statSelect">Status</label>
+            <select class="form-control" id="statSelect">
+              <option selected>in progress</option>
+              <option>done</option>
+              <option>important</option>
+              <option>cancelled</option>
+            </select>
           </div>
           <div class="col-xs-12 form-group">
             <label for="descInput">Description</label>
@@ -49,16 +58,16 @@
       </form>  
   </div>
   <footer class="row text-center">
-    <section>
-      <nav class="col-lg-12 navbar text-center">
+    <section class="col-xs-12">
+      <nav class="navbar">
         <ul class="nav nav-pills" style="display: inline-block !important">
           <li><a href="index.html">Home</a></li>
-          <li><a href="createNew.html">New Entry</a></li>
+          <li><a href="createEntry.html">New Entry</a></li>
           <li><a href="impress.html">Impress</a></li>
         </ul>
       </nav>
     </section>
-    <p class="copy text-uppercase">2015 Technische Universit&auml;t Berlin<br>
+    <p class="col-xs-12 copy text-uppercase">2015 Technische Universit&auml;t Berlin<br>
       &times; CIT Programmierpraktikum &times;<br>
       T. Tietz, K. Schmidt</p>
   </footer>

@@ -13,4 +13,8 @@ a:hover, a:focus, .pagination > li > a:hover, .pagination > li > span:hover { co
   background-repeat: repeat-x;
 }
 
+.bg-green { background-color: #dff0d8; }
+.bg-yellow { background-color: #fcf8e3; }
+.bg-red { background-color: #f2dede; }
+
 .copy { font-size: 10px; }
