@@ -1,8 +1,12 @@
-a, .pagination > li > a, .pagination > li > span { color: rgba(197,14,31,1); }
-a:hover, a:focus, .pagination > li > a:hover, .pagination > li > span:hover { color: rgba(167,14,31,1); }
+a, .pagination > li > a, 
+.pagination > li > span { color: rgba(197,14,31,1); }
+a:hover, a:focus, 
+.pagination > li > a:hover, 
+.pagination > li > span:hover { color: rgba(167,14,31,1); }
 
 .btn-primary { background-color: rgba(197,14,31,1); border-color: rgba(217,14,31,1); }
-.btn-primary:hover, .btn-primary:focus { background-color: rgba(167,14,31,1); border-color: rgba(187,14,31,1); }
+.btn-primary:hover, 
+.btn-primary:focus { background-color: rgba(167,14,31,1); border-color: rgba(187,14,31,1); }
 
 .dropdown-menu { min-width: 91px; }
 .dropdown-menu a { text-align: center; }
@@ -15,5 +19,8 @@ a:hover, a:focus, .pagination > li > a:hover, .pagination > li > span:hover { co
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd90e1f', endColorstr='#ffc50e1f', GradientType=0);
   background-repeat: repeat-x;
 }
+
+.table th:nth-of-type(4), 
+.table th:nth-of-type(5) { width: 60px; }
 
 .copy { font-size: 10px; }
