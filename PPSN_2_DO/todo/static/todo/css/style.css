@@ -7,10 +7,10 @@ a:hover, a:focus,
 .pagination > li > a:hover, 
 .pagination > li > span:hover { color: rgba(167,14,31,1); }
 
-.btn-primary { background-color: rgba(197,14,31,1); border-color: rgba(217,14,31,1); }
-.btn-primary:hover, 
-.btn-primary:focus { background-color: rgba(167,14,31,1); border-color: rgba(187,14,31,1); }
+.btn-primary, 
 .pagination .active a { background-color: rgba(197,14,31,1); border-color: rgba(217,14,31,1); }
+.btn-primary:hover, .btn-primary:focus,
+.pagination .active a:hover { background-color: rgba(167,14,31,1); border-color: rgba(187,14,31,1); }
 
 .list-control button {
 	border-top-left-radius: 0px; border-bottom-left-radius: 0px;
