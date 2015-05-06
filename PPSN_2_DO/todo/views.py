@@ -25,13 +25,24 @@ def index(request):
         mod = task_count%list_count
         page_count = int(task_count/list_count)
         if mod > 0: page_count += 1
-        latest_task_list = Task.objects.filter(pub_date__lte=timezone.now()).order_by('-task_deadline')[0:list_count]
+        page = request.GET.get('page', 0)
+        offset = (int(page) - 1 ) * list_count
+        if int(page) > 0:
+            offset = (int(page) - 1 ) * list_count
+            limit = int(page) * list_count
+        else :
+            offset = 0
+            limit = 5
+        
+        latest_task_list = Task.objects.filter(pub_date__lte=timezone.now()).order_by('-task_deadline')[offset:limit]
 
     return render(request, 'todo/index.html', {
         'latest_task_list': latest_task_list,
         'list_count': list_count,
         'task_count': task_count,
         'page_count': range(page_count),
+        'pages': len(range(page_count)),
+        'page': int(page)-1,
     })
 
 def edit(request, task_id):

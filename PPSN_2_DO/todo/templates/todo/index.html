@@ -90,13 +90,17 @@
     </table>
   </div>
   <footer class="row text-center">
+  	{{ page }}
+  	{% if pages > 1 %}
     <nav class="col-xs-12">
       <ul class="pagination" style="margin-top: 0 !important;">
         {% for i in page_count %}
-        <li><a href="{% url 'todo:index' %}?list_count={% if list_count == 0 %}All{% else %}{{ list_count }}{% endif %}+entries">{{ i|add:"1" }}</a>
+        <li{% if i == page %} class="active"{% endif %}>
+        	<a href="{% url 'todo:index' %}?page={{ i|add:'1' }}&list_count={% if list_count == 0 %}All{% else %}{{ list_count }}{% endif %}+entries">{{ i|add:'1' }}</a>
         {% endfor %}
       </ul>
     </nav>
+    {% endif %}
     <nav class="col-xs-12 navbar">
       <ul class="nav nav-pills" style="display: inline-block !important">
         <li><a href="{% url 'todo:index' %}">Home</a></li>

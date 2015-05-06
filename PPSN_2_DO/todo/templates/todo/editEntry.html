@@ -43,7 +43,7 @@
       <div class="col-xs-6 col-sm-4 form-group">
         <label for="statSelect">Status</label>
         <select class="form-control" id="statSelect" name="status">
-          <option{% if task.task_status == 'R' %} selected{% endif %}>in progress</option>
+          <option{% if task.task_status == 'R' %} selected{% endif %}>Select status</option>
           <option{% if task.task_status == 'D' %} selected{% endif %}>done</option>
           <option{% if task.task_status == 'I' %} selected{% endif %}>important</option>
           <option{% if task.task_status == 'C' %} selected{% endif %}>cancelled</option>
