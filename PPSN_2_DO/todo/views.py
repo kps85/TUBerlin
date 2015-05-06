@@ -13,35 +13,52 @@ from .models import Task
 def index(request):
     task_count = Task.objects.count()
     list_count = request.GET.get('list_count', '5').split(" ")[0]
-
-    if list_count == 'All':
+    search_query = request.GET.get('search', '').split(" ")
+    
+    if len(search_query) > 0 and search_query[0] != '':
         list_count = 0
         page_count = 1
-        latest_task_list = Task.objects.filter(pub_date__lte=timezone.now()).order_by('-task_deadline')
-    else:
-        list_count = int(list_count)
-        mod = task_count%list_count
-        page_count = int(task_count/list_count)
-        if mod > 0: page_count += 1
-        page = request.GET.get('page', 0)
-        offset = (int(page) - 1 ) * list_count
-        if int(page) > 0:
+        page = 1
+        search_list_raw = []
+        search_list = []
+        for sq in search_query:
+            search_list_raw.append(Task.objects.filter(task_desc__contains = sq).values('id').values())
+        for slr in search_list_raw:
+            search_list.append(slr.values('id'))
+        return render(request, 'todo/index.html', {
+            'task_list': Task.objects.filter(task_desc__in = ['10', '14']),
+            'search_list': search_list,
+            'list_count': 0, 'page_count': 1, 'pages': 1, 'page': 1,
+        })
+    else :
+        if list_count == 'All':
+            task_list = Task.objects.all().order_by('-task_deadline')
+            return render(request, 'todo/index.html', {
+                'task_list': task_list,
+                'list_count': 0, 'page_count': 1, 'pages': 1, 'page': 1,
+            })
+        else:
+            list_count = int(list_count)
+            mod = task_count%list_count
+            page_count = int(task_count/list_count)
+            if mod > 0: page_count += 1
+            page = request.GET.get('page', 0)
             offset = (int(page) - 1 ) * list_count
-            limit = int(page) * list_count
-        else :
-            offset = 0
-            limit = list_count
-        
-        latest_task_list = Task.objects.filter(pub_date__lte=timezone.now()).order_by('-task_deadline')[offset:limit]
-
-    return render(request, 'todo/index.html', {
-        'latest_task_list': latest_task_list,
-        'list_count': list_count,
-        'task_count': task_count,
-        'page_count': range(page_count),
-        'pages': len(range(page_count)),
-        'page': int(page)-1,
-    })
+            if int(page) > 0:
+                offset = (int(page) - 1 ) * list_count
+                limit = int(page) * list_count
+            else :
+                offset = 0
+                limit = list_count
+            
+            task_list = Task.objects.order_by('-task_deadline')[offset:limit]
+            return render(request, 'todo/index.html', {
+                'task_list': task_list,
+                'list_count': list_count,
+                'page_count': range(page_count),
+                'pages': len(range(page_count)),
+                'page': int(page)-1,
+            })
 
 def edit(request, task_id):
     t = get_object_or_404(Task, pk=task_id)
