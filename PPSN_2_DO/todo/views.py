@@ -12,9 +12,7 @@ from .models import Task
 
 def index(request):
     task_count = Task.objects.count()
-
-    if isinstance(request.GET.get('list_count', '5'), int): list_count = request.GET.get('list_count', '5')
-    else: list_count = request.GET.get('list_count', '5').split(" ")[0]
+    list_count = request.GET.get('list_count', '5').split(" ")[0]
 
     if list_count == 'All':
         list_count = 0
@@ -32,7 +30,7 @@ def index(request):
             limit = int(page) * list_count
         else :
             offset = 0
-            limit = 5
+            limit = list_count
         
         latest_task_list = Task.objects.filter(pub_date__lte=timezone.now()).order_by('-task_deadline')[offset:limit]
 
