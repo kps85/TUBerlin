@@ -13,21 +13,14 @@ from .models import Task
 def index(request):
     task_count = Task.objects.count()
     list_count = request.GET.get('list_count', '5').split(" ")[0]
-    search_query = request.GET.get('search', '').split(" ")
+    search_query = request.GET.get('search', '')
     
     if len(search_query) > 0 and search_query[0] != '':
         list_count = 0
         page_count = 1
         page = 1
-        search_list_raw = []
-        search_list = []
-        for sq in search_query:
-            search_list_raw.append(Task.objects.filter(task_desc__contains = sq).values('id').values())
-        for slr in search_list_raw:
-            search_list.append(slr.values('id'))
         return render(request, 'todo/index.html', {
-            'task_list': Task.objects.filter(task_desc__in = ['10', '14']),
-            'search_list': search_list,
+            'task_list': Task.objects.filter(task_desc__contains = search_query),
             'list_count': 0, 'page_count': 1, 'pages': 1, 'page': 1,
         })
     else :
