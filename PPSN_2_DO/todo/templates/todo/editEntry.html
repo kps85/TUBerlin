@@ -30,6 +30,7 @@
   </header>
   <div class="row" id="content">
   	{% if info_message %}<p class="success text-center text-success"><strong>{{ info_message }}</strong></p>{% endif %}
+    {% if warn_message %}<p class="danger text-center text-danger"><strong>{{ warn_message }}</strong></p>{% endif %}
     <form action="{% url 'todo:edit' task.id %}" method="post">
     {% csrf_token %}
       <div class="col-xs-12 col-sm-4 form-group">

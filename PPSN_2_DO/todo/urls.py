@@ -6,6 +6,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^create/', views.create, name='create'),
     url(R'^edit/(?P<task_id>[0-9]+)/', views.edit, name='edit'),
-    url(r'^delete/(?P<task_id>[0-9]+)/', views.delete, name='delete'),
     url(r'^imprint/', views.imprint, name='imprint'),
 ]
