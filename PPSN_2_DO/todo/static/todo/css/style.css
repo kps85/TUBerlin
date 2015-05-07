@@ -1,0 +1,41 @@
+p.success { background-color: #dff0d8; }
+p.danger { background-color: #f2dede; }
+
+a, .pagination > li > a, 
+.pagination > li > span { color: rgba(197,14,31,1); }
+a:hover, a:focus, 
+.pagination > li > a:hover, 
+.pagination > li > span:hover { color: rgba(167,14,31,1); }
+
+.btn-primary, 
+.pagination .active a { background-color: rgba(197,14,31,1); border-color: rgba(217,14,31,1); }
+.btn-primary:hover, .btn-primary:focus,
+.pagination .active a:hover { background-color: rgba(167,14,31,1); border-color: rgba(187,14,31,1); }
+
+.list-control button {
+	border-top-left-radius: 0px; border-bottom-left-radius: 0px;
+}
+.list-control .form-control {
+	display: inline-block; width: auto;
+	border-top-right-radius: 0px; border-bottom-right-radius: 0px;
+}
+.form-control:focus {
+  border-color: rgba(217,14,31,1);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(217,14,31, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(217,14,31, .6);
+}
+
+.progress-bar {
+  background-image: -webkit-linear-gradient(top, #d90e1f 0%, #c50e1f 100%);
+  background-image:      -o-linear-gradient(top, #d90e1f 0%, #c50e1f 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d90e1f), to(#c50e1f));
+  background-image:         linear-gradient(to bottom, #d90e1f 0%, #c50e1f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd90e1f', endColorstr='#ffc50e1f', GradientType=0);
+  background-repeat: repeat-x;
+}
+
+.table th:nth-of-type(4), 
+.table th:nth-of-type(5) { width: 60px; }
+
+.copy { font-size: 10px; }
