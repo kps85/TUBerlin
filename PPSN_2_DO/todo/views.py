@@ -14,16 +14,13 @@ from .models import Task
 def index(request):
     task_count = Task.objects.count()
     task_list = Task.objects.order_by('-task_deadline')
-    list_count = request.GET.get('list_count', '5').split(" ")[0]
-    search_query = request.GET.get('search', '')
+    list_count = request.GET.get('list_count', '5').strip().split(" ")[0]
+    search_query_raw = request.GET.get('search', '').strip().split(" ")
+    search_query = []
     del_query = request.GET.get('delete', '')
+    page_count, pages, page = 1, 1, 1
     offset = 0
-    limit = None
-    page_count = 1
-    pages = 1
-    page = 1
-    info_message = None
-    warn_message = None
+    limit, info_message, warn_message = None, None, None
     
     if len(del_query) > 0 and del_query[0]!= '':
         try:
@@ -34,8 +31,13 @@ def index(request):
             t.delete()
             info_message = 'Task (id = ' + del_query + ') successfully deleted.'
             
-    if len(search_query) > 0 and search_query[0] != '':
-        task_list = Task.objects.filter(task_desc__contains = search_query)
+    if len(search_query_raw) > 0 and search_query_raw[0] != '':
+        for s in search_query_raw:
+            tasks = Task.objects.filter(task_desc__icontains=s).values('id')
+            if tasks:
+                for task in tasks:
+                    search_query.append(task.get('id'))
+        task_list = Task.objects.filter(id__in = search_query)
         
     else :
         if list_count == 'All':
@@ -52,10 +54,7 @@ def index(request):
                 limit = int(page) * list_count
             else :
                 limit = list_count
-
-            page_count = range(page_count)
-            pages = len(page_count)
-            page = int(page)-1
+            page_count, pages, page = range(page_count), len(range(page_count)), int(page)-1
             
     return render(request, 'todo/index.html', {
         'task_list': task_list[offset:limit],
@@ -65,6 +64,7 @@ def index(request):
         'page': page,
         'info_message': info_message,
         'warn_message': warn_message,
+        'search': search_query,
     })
 
 def edit(request, task_id):
