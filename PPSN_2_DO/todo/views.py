@@ -19,8 +19,8 @@ def index(request):
     search_query = []
     del_query = request.GET.get('delete', '')
     page_count, pages, page = 1, 1, 1
-    offset = 0
-    limit, info_message, warn_message = None, None, None
+    offset, search_count = 0, 0
+    limit, info_message, warn_message, search_message = None, None, None, None
     
     if len(del_query) > 0 and del_query[0]!= '':
         try:
@@ -38,6 +38,8 @@ def index(request):
                 for task in tasks:
                     search_query.append(task.get('id'))
         task_list = Task.objects.filter(id__in = search_query)
+        search_count = task_list.count()
+        search_message = str(search_count) + ' result(s) for "' + ' '.join(search_query_raw) + '"'
         
     else :
         if list_count == 'All':
@@ -64,7 +66,7 @@ def index(request):
         'page': page,
         'info_message': info_message,
         'warn_message': warn_message,
-        'search': search_query,
+        'search_message': search_message,
     })
 
 def edit(request, task_id):

@@ -50,6 +50,7 @@
   <div class="row" id="content">
   {% if info_message %}<p class="success text-center text-success"><strong>{{ info_message }}</strong></p>{% endif %}
   {% if warn_message %}<p class="danger text-center text-danger"><strong>{{ warn_message }}</strong></p>{% endif %}
+  {% if search_message %}<p><strong>{{ search_message }}</strong></p>{% endif %}
     <table class="table table-striped table-hover" id="toDoList">
       <tr>
         <th>Date</th>
