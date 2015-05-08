@@ -78,20 +78,19 @@ def edit(request, task_id):
                 'warn_message': 'Sorry, missing description. Try again!',
             })
         else :
-            try:    
-                if ( request.POST['status'] == 'cancelled' ) : s = 'C'
-                elif ( request.POST['status'] == 'done' ) : s = 'D'
-                elif ( request.POST['status'] == 'important' ) : s = 'I'
+            try:
+                s = request.POST['status']
+                p = int(request.POST.get('progress', 0))
+                if ( s == 'cancelled' ) : s = 'C'
+                elif ( s == 'done' ) : s = 'D'
+                elif ( s == 'important' ) : s = 'I'
                 else : s = 'R'            
 
-                if ( request.POST['progress'] == '' ) : p = 0
-                elif ( request.POST['progress'] == 100 and s != 'D' ) :
+                if ( str(p) == '' ) : p = 0
+                elif ( p == 100 and s != 'D' ) :
                     s = 'D'
-                    p = request.POST['progress']
-                elif ( request.POST['progress'] != 100 and s == 'D' ) :
-                    s = 'R'
+                elif ( p != 100 and s == 'D' ) :
                     p = 100
-                else : p = request.POST['progress']
                 
                 t.task_deadline = datetime.datetime.strptime(request.POST['deadline'], "%Y-%m-%d")
             except (KeyError):
@@ -102,12 +101,10 @@ def edit(request, task_id):
             except (ValueError):
                 return render(request, 'todo/editEntry.html', {
                     'task': t,
-                    'warn_message': "Sorry, missing or wrong date. Try again!",
+                    'warn_message': "Sorry, missing or wrong value (date or progress). Try again!",
                 })
             else:
-                t.task_desc = request.POST['description']
-                t.task_progress = p
-                t.task_status = s
+                t.task_desc, t.task_progress, t.task_status = request.POST['description'], p, s
                 t.save()
                 return render(request, 'todo/editEntry.html', {
                     'task': t,
